@@ -1,99 +1,667 @@
-<!DOCTYPE HTML>
-<!--
-	Astral by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Jordan Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jordan Gaskin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #F5C842;
+      --gold-dim: #C49A1A;
+      --bg: #0A0A0A;
+      --surface: #111111;
+      --surface2: #1A1A1A;
+      --text: #E8E8E0;
+      --muted: #666660;
+      --border: #222220;
+    }
 
-		<!-- Wrapper-->
-			<div id="wrapper">
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-				<!-- Nav -->
-					<nav id="nav">
-						<a href="#" class="icon solid fa-home"><span>Home</span></a>
-						<a href="#work" class="icon solid fa-folder"><span>Projects</span></a>
-						<a href="#contact" class="icon solid fa-envelope"><span>Contact</span></a>
+    html { scroll-behavior: smooth; }
 
-					</nav>
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-				<!-- Main -->
-					<div id="main">
+    /* NOISE OVERLAY */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 200px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
 
-						<!-- Me -->
-							<article id="home" class="panel intro">
-								<header>
-									<h1>Jordan Gaskin</h1>
-									<p>Software Engineer</p>
-									<h6>Hello, I'm Jordan!  I'm a full stack web developer/programmer with experience creating web apps from scratch.  My expertise lies
-										within front and back end web apps with my language tech stack being Python, C, Flask, and HTML/CSS. </h6>
-								</header>
-								<a href="#work" class="jumplink pic">
-									<span class="arrow icon solid fa-chevron-right"><span>See my work</span></span>
-									<img src="images/sam-albury-oA7MMRxTVzo-unsplash.jpg" alt="" />
-								</a>
-							</article>
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 48px;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+    }
 
-						<!-- Work -->
-							<article id="work" class="panel">
-								<header>
-									<h2>Projects</h2>
-								</header>
-								<p>
-									A few of the projects I've finished and deployed so far
-								</p>
-								<section>
-									<div class="row">
-										<div class="col-4 col-6-medium col-12-small">
-											<a>Toptens</a>
-											<a href="https://jrdn-playlist-maker.onrender.com/" class="image fit"><img src="images/alexander-shatov-w-qqwn5O-4I-unsplash.jpg" alt="">
-												<div>
-												Photo by <a href="https://unsplash.com/@alexbemore?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alexander Shatov</a> on <a href="https://unsplash.com/s/photos/spotify?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-												</div>
-											</a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a>JRDN-stock</a>
-											<a href="https://jrdn-stock.onrender.com/register" class="image fit2"><img src="images/nicholas-cappello-Wb63zqJ5gnE-unsplash.jpg" alt=""></a>
-											Photo by <a href="https://unsplash.com/@bash__profile?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Nicholas Cappello</a> on <a href="https://unsplash.com/s/photos/stocks?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-										</div>
-									</div>
-								</section>
-							</article>
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-decoration: none;
+    }
 
-						<!-- Contact -->
-							<article id="contact" class="panel">
-								<header>
-									<h2>Contact Me</h2>
-								</header>
-								jgaskin1998@gmail.com
-							</article>
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
 
-					</div>
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
 
-				<!-- Footer -->
-					<div id="footer">
-						<ul class="copyright">
-							<li>&copy; Untitled.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-						</ul>
-					</div>
+    .nav-links a:hover { color: var(--gold); }
 
-			</div>
+    /* HERO */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 48px;
+      position: relative;
+      z-index: 1;
+    }
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+    .hero-inner {
+      max-width: 900px;
+    }
 
-	</body>
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(64px, 10vw, 120px);
+      font-weight: 300;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.4s;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-bio {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.9;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.6s;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.8s;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--gold);
+      color: var(--bg);
+    }
+
+    .btn-ghost {
+      border-color: var(--border);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--muted);
+      background: transparent;
+      color: var(--text);
+    }
+
+    /* SCROLL INDICATOR */
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 48px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 1.2s;
+    }
+
+    .scroll-hint::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--muted);
+    }
+
+    /* SECTIONS */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 120px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 64px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      max-width: 200px;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover { background: var(--surface2); }
+    .project-card:hover::before { transform: scaleX(1); }
+
+    .project-num {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .project-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.1;
+    }
+
+    .project-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .project-card:hover .tag {
+      border-color: var(--gold-dim);
+      color: var(--gold);
+    }
+
+    .project-arrow {
+      position: absolute;
+      bottom: 48px;
+      right: 48px;
+      font-size: 20px;
+      color: var(--muted);
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .project-card:hover .project-arrow {
+      color: var(--gold);
+      transform: translate(4px, -4px);
+    }
+
+    .project-card.full-width {
+      grid-column: span 2;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .skill-group {
+      background: var(--surface);
+      padding: 36px;
+    }
+
+    .skill-group-title {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .skill-list {
+      list-style: none;
+    }
+
+    .skill-list li {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+
+    .skill-list li:last-child { border-bottom: none; }
+    .skill-list li:hover { color: var(--text); }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .about-text em { color: var(--gold); font-style: italic; }
+
+    .about-details {
+      padding-top: 8px;
+    }
+
+    .about-detail {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .about-detail:first-child { border-top: 1px solid var(--border); }
+
+    .detail-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .detail-value {
+      font-size: 12px;
+      color: var(--text);
+      text-align: right;
+    }
+
+    /* CONTACT */
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .contact-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(40px, 5vw, 72px);
+      font-weight: 300;
+      line-height: 1.1;
+    }
+
+    .contact-heading em { color: var(--gold); font-style: italic; }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .contact-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      background: var(--surface);
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .contact-link:hover {
+      background: var(--surface2);
+      color: var(--gold);
+    }
+
+    /* FOOTER */
+    footer {
+      position: relative;
+      z-index: 1;
+      padding: 40px 48px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer span {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* DIVIDER */
+    hr.gold {
+      border: none;
+      height: 1px;
+      background: var(--border);
+      margin: 0 48px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      #home, section { padding-left: 24px; padding-right: 24px; }
+      .projects-grid, .skills-grid, .about-grid, .contact-inner { grid-template-columns: 1fr; }
+      .project-card.full-width { grid-column: span 1; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+      hr.gold { margin: 0 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="#home">JG</a>
+    <ul class="nav-links">
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" style="max-width:100%; padding-top:0; padding-bottom:0;">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Software Engineer &amp; CS Graduate — Buffalo, NY</p>
+      <h1 class="hero-name">Jordan<br><em>Gaskin</em></h1>
+      <p class="hero-bio">
+        Full-stack developer with a background in Computer Science and Public Health.
+        I build data-driven applications, privacy-first tools, and low-level systems.
+        Currently open to SWE and IT Analyst roles.
+      </p>
+      <div class="hero-links">
+        <a class="btn" href="#projects">View My Work</a>
+        <a class="btn btn-ghost" href="https://github.com/jigaski" target="_blank">GitHub</a>
+        <a class="btn btn-ghost" href="https://linkedin.com/in/jordan-gaskin-081998" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+    <p class="scroll-hint">Scroll to explore</p>
+  </section>
+
+  <hr class="gold">
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">Selected Work</p>
+    <div class="projects-grid">
+
+      <a class="project-card" href="https://musicology-one.vercel.app/" target="_blank">
+        <p class="project-num">01</p>
+        <h2 class="project-title">Musicology</h2>
+        <p class="project-desc">
+          Privacy-first Spotify analytics. Parses and visualizes your full listening history entirely in the browser — no server, no data collection.
+        </p>
+        <div class="project-tags">
+          <span class="tag">React</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Data Visualization</span>
+          <span class="tag">JSON</span>
+        </div>
+        <span class="project-arrow">↗</span>
+      </a>
+
+      <a class="project-card" href="https://jrdn-playlist-maker.onrender.com/" target="_blank">
+        <p class="project-num">02</p>
+        <h2 class="project-title">Spotify Playlist Automator</h2>
+        <p class="project-desc">
+          Full-stack web app with Spotify OAuth 2.0. Search any artist, preview their top 10 tracks, and generate a playlist in your library with one click.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Flask</span>
+          <span class="tag">REST API</span>
+          <span class="tag">OAuth</span>
+        </div>
+        <span class="project-arrow">↗</span>
+      </a>
+
+      <div class="project-card full-width" style="cursor:default;">
+        <p class="project-num">03</p>
+        <h2 class="project-title">Malloc — Custom Memory Allocator</h2>
+        <p class="project-desc">
+          A production-grade pool allocator in C built as a drop-in replacement for malloc, free, calloc, and realloc. Implements segregated free lists across 13 size classes, bit-packed metadata headers for allocation state, and 8-byte alignment guarantees. Validated against real Unix utilities. Source code available upon request.
+        </p>
+        <div class="project-tags">
+          <span class="tag">C</span>
+          <span class="tag">Systems Programming</span>
+          <span class="tag">Memory Management</span>
+          <span class="tag">Bit Manipulation</span>
+          <span class="tag">Unix</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="gold">
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">Technical Skills</p>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <p class="skill-group-title">Languages</p>
+        <ul class="skill-list">
+          <li>Java</li>
+          <li>Python</li>
+          <li>JavaScript</li>
+          <li>C</li>
+          <li>SQL</li>
+          <li>HTML / CSS</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Frameworks &amp; Tools</p>
+        <ul class="skill-list">
+          <li>React</li>
+          <li>Flask</li>
+          <li>Git</li>
+          <li>Docker</li>
+          <li>Bootstrap</li>
+          <li>REST APIs</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Concepts</p>
+        <ul class="skill-list">
+          <li>Object-Oriented Design</li>
+          <li>Systems Programming</li>
+          <li>Data Analysis</li>
+          <li>Agile Development</li>
+          <li>Technical Documentation</li>
+          <li>OAuth 2.0</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="gold">
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About</p>
+    <div class="about-grid">
+      <div class="about-text">
+        I'm a May 2026 graduate from the <em>University at Buffalo</em> with dual degrees in Computer Science and Public Health — a combination I actively bring into my work on data-driven and health-adjacent applications.
+        <br><br>
+        I care about building things that are <em>well-engineered</em> and that respect the people using them.
+      </div>
+      <div class="about-details">
+        <div class="about-detail">
+          <span class="detail-label">Location</span>
+          <span class="detail-value">Buffalo, NY</span>
+        </div>
+        <div class="about-detail">
+          <span class="detail-label">Education</span>
+          <span class="detail-value">B.S. Computer Science<br>B.S. Public Health — UB</span>
+        </div>
+        <div class="about-detail">
+          <span class="detail-label">Available</span>
+          <span class="detail-value">May 2026</span>
+        </div>
+        <div class="about-detail">
+          <span class="detail-label">Open to</span>
+          <span class="detail-value">SWE · IT Analyst · Data · Remote</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="gold">
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">Contact</p>
+    <div class="contact-inner">
+      <h2 class="contact-heading">Let's<br>work<br><em>together.</em></h2>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:jgaskin1998@gmail.com">
+          <span>jgaskin1998@gmail.com</span>
+          <span>↗</span>
+        </a>
+        <a class="contact-link" href="https://linkedin.com/in/jordan-gaskin-081998" target="_blank">
+          <span>LinkedIn</span>
+          <span>↗</span>
+        </a>
+        <a class="contact-link" href="https://github.com/jigaski" target="_blank">
+          <span>GitHub</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Jordan Gaskin</span>
+    <span>Buffalo, NY</span>
+  </footer>
+
+</body>
 </html>
